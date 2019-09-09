@@ -4,7 +4,7 @@ create or replace procedure insereFixo
 is 
 begin
 for i in 1..10000 loop
-	insert into teste values(i,'nome'||i,1000);
+	insert into teste values(i,'Nome'||i,1000);
 end loop;
 end insereFixo;
 /
@@ -22,11 +22,21 @@ is
 begin
 for i in 1..10000 loop	
 	if i <= 5000 then
-		insert into teste values(i, 'nome'||i,1000,'M');
+		insert into teste values(i, 'Nome'||i,1000,'M');
 	else 
-		insert into teste values(i, 'nome'||i,1000,'F');
+		insert into teste values(i, 'Nome'||i,1000,'F');
 	end if;
 end loop;
 end insereFixo;
 /
 
+create procedure insereVariavel(qtde number)
+is
+begin
+for i in 1..qtde loop
+	insert into teste values(i,'Nome'||i,1000,'I');
+end loop;
+end insereVariavel;
+/
+
+exec  insereVariavel(50);
