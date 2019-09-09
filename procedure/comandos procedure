@@ -40,3 +40,29 @@ end insereVariavel;
 /
 
 exec  insereVariavel(50);
+
+--delete from teste;
+
+select * from teste;
+
+mod (10,2)
+0
+mod(11,2)
+1
+
+create or replace procedure insereVariavel(qtde number, salario number)
+is
+begin
+for i in 1..qtde loop
+	if mod (1,2) = 0 then
+		insert into teste values (i,'nome'||i,salario,'M');
+	else
+		insert into teste values (i, 'nome'||i,salario,'F');
+	end if;
+end loop;
+end insereVariavel;
+/
+
+exec insereVariavel(50,890);
+
+select nome, salario, genero from teste;
