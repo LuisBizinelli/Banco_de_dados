@@ -1,0 +1,32 @@
+create table teste(id number(9), nome varchar2(50), salario number(8,2));
+
+create or replace procedure insereFixo
+is 
+begin
+for i in 1..10000 loop
+	insert into teste values(i,'nome'||i,1000);
+end loop;
+end insereFixo;
+/
+
+exec insereFixo;
+
+select * from teste;
+
+select * from teste where ROWNUM <= 100;
+
+alter table teste add genero char;
+
+create or replace procedure insereFixo
+is
+begin
+for i in 1..10000 loop	
+	if i <= 5000 then
+		insert into teste values(i, 'nome'||i,1000,'M');
+	else 
+		insert into teste values(i, 'nome'||i,1000,'F');
+	end if;
+end loop;
+end insereFixo;
+/
+
