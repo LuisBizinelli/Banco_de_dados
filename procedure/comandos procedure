@@ -66,3 +66,54 @@ end insereVariavel;
 exec insereVariavel(50,890);
 
 select nome, salario, genero from teste;
+
+create or replace procedure atualiza_salario(pid number,psalario number)
+is
+begin
+update teste set salario = psalario where id = pid;
+end atualiza_salario;
+/
+
+select * from teste;
+
+exec atualiza_salario(50, 1250);
+
+create or replace procedure aumenta_salario(pid number,psalario number)
+is
+valor number(8,2);
+begin 
+if psalario < 1000 then 
+	valor := psalario + 50;
+else
+	valor := psalario + 200;
+end if;
+update teste set salario = valor where id = pid;
+end aumenta_salario;
+/
+
+
+exec aumenta_salario(40,2000);
+
+select salario from teste where id = 40;
+
+id, cargo 
+cargo -> salario;
+
+create or replace procedure atualiza_cargo (pid number, cargo number);
+is
+valor number (8,2);
+begin
+if cargo = 1 then
+valor := 1000;
+elsif cargo = 2 then
+valor := 2000;
+else 
+valor := 3000;
+end if;
+update teste set salario = valor where id = pid;
+end atualiza_cargo;
+/
+
+exec atualiza_cargo(20,3);
+
+select * from teste;
